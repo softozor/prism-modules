@@ -1,23 +1,17 @@
-﻿using BlankApp1.Views;
-using Prism.Ioc;
-using Prism.Modularity;
-using System.Windows;
+﻿using System.Windows;
 
 namespace BlankApp1
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App
+  /// <summary>
+  /// Interaction logic for App.xaml
+  /// </summary>
+  public partial class App : Application
+  {
+    protected override void OnStartup(StartupEventArgs e)
     {
-        protected override Window CreateShell()
-        {
-            return Container.Resolve<MainWindow>();
-        }
-
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
-        {
-
-        }
+      base.OnStartup(e);
+      var bootstrapper = new Bootstrapper();
+      bootstrapper.Run();
     }
+  }
 }
